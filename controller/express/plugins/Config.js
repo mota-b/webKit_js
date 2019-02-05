@@ -3,7 +3,7 @@
  */
 let express = require('express');
     path = require('path');
-    logger = require('morgan');
+    morgan = require('morgan');
     cookieParser = require('cookie-parser');
     bodyParser = require('body-parser');
     session = require('express-session')
@@ -21,7 +21,7 @@ module.exports = function (app) {
     //app.get('/favicon.ico', (req, res) => res.status(204));
 
     app.use(cors())
-    app.use(logger('dev'));
+    app.use(morgan('dev'));// Output console type ==> see the github
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     
