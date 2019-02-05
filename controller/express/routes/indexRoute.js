@@ -1,10 +1,9 @@
-var express = require('express');
-var router = express.Router();
+let router = require('express').Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('indexView', { 
-    title: 'Express', 
+    title: 'Index', 
     links: [
       "https://use.fontawesome.com/releases/v5.7.0/css/all.css", // Font Awesome
       "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css", // Bootstrap Core
