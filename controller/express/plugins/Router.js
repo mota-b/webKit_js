@@ -13,7 +13,7 @@ module.exports = function (app) {
     
 
     // API access
-    let loginApi = require('../api/login'),
+    let loginApi = require('../api/loginApi'),
         usersApi = require('../api/usersApi')
     
     app.use('/api/login', loginApi);
