@@ -5,9 +5,11 @@ module.exports = function (app) {
     /**
      * Router Initialisation and Use.
      */
-    let index = require('../routes/indexRoute'),
+    let admin = require('../routes/adminRoute'),
+        index = require('../routes/indexRoute'),
         login = require('../routes/loginRoute');
-     
+    
+    app.use('/admin', admin);
     app.use('/', index);
     app.use('/login' || '/register', login);
     

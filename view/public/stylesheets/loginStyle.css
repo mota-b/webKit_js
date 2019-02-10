@@ -1,0 +1,110 @@
+/* Global */
+ /* body {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.section{
+  padding-top: 60px;
+  height: 100vh; 
+} */
+
+
+
+/* Main content */
+/* #main-content {
+  
+  height: 100vh;
+  overflow: hidden; 
+}
+#main-content ul {
+  position: absolute;
+  z-index: 2000;
+  margin-top: 20px;
+  float: right;
+  display: inline-block;
+  list-style: none; 
+}
+#main-content ul div {
+  padding: 0px; 
+}
+#main-content ul li {
+  font-family: "Lato";
+  font-size: 20px;
+  margin: 15px;
+  display: inline; 
+}
+#main-content ul li:hover {
+  border-bottom: 2px solid white; 
+}
+#main-content ul li a {
+  color: white;
+  text-decoration: none; 
+}
+#main-content .left-1,.left-2,.right-1,.right-2 {
+  height: 100vh;
+  width: 100vh;
+  overflow: scroll;
+  padding-top: 50px; 
+}
+#main-content .left-1, #main-content .right-2 {
+  
+}
+#main-content .left-1, #main-content .right-1 {
+  background-color: #1bbc9b; 
+}
+#main-content .left-2, #main-content .right-2 {
+  background-color: #4bbfc3; 
+}
+#main-content .sec-2 {
+  display: none; 
+}
+#main-content form {
+  margin-top: 30%; 
+}
+#main-content form div span {
+  width: 40px; 
+} */
+
+
+/* Global */
+body {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px ;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#main-content{
+  margin: 0px !important;
+  padding: 0px !important;
+  height: 100vh;
+  width: 100vw;
+  background-color: #4bbfc3;
+  max-width: 100000px !important;
+}
+#main-content .row{
+  height: 100%;
+  width: 100%;
+  margin: 0px !important;
+  padding: 0px !important;
+}  
+
+/* area1 */
+#area-1{
+  background-color: #1bbc9b;
+  height: 100%;
+  width: 100%;
+}
+#area-2{
+  display: none;
+  background-color: #4bbfc3;
+  height: 100%;
+  width: 100%;
+}
+
+.card{
+  margin-top: 20vh;
+}
+

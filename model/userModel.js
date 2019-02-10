@@ -26,14 +26,27 @@ UserSchema.methods.verifyPassword = (password, hash) => {
 }
   
 // Generate a token
-UserSchema.statics.generateJWT = (data) => {
-    return jwt.sign(
-        {
-            _id: data
-        },
-        process.env.TOKEN_SECRET,
-        { expiresIn: "1d" }
-    );
+UserSchema.statics.generateJWT = (data, options) => {
+    
+    if (options){
+        return jwt.sign(
+            {
+                _id: data
+            },
+            process.env.TOKEN_SECRET,
+            options
+        );
+    }else{
+        return jwt.sign(
+            {
+                _id: data
+            },
+            process.env.TOKEN_SECRET,
+            { expiresIn: "1d" }
+        );
+    }
+    
+    
 }
 
 // Verify the token
