@@ -12,7 +12,6 @@ $(document).ready(function(){
         
         
         if(user){
-            console.log(user);
             $(".navbar-nav.ml-auto").html("")
             
             $(".navbar-nav.ml-auto").html(

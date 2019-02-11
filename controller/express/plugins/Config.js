@@ -17,6 +17,7 @@ module.exports = function (app) {
     app.use("*/js", express.static(path.join(__dirname, "../../../view/public/javascripts")));
     app.use("*/css", express.static(path.join(__dirname, "../../../view/public/stylesheets")));
     app.use("*/img", express.static(path.join(__dirname, "../../../view/public/media/images")));
+    app.use("*/bower", express.static(path.join(__dirname, "../../../view/public/bower_components")));
     //app.use(express.static(path.join(__dirname, '../public')));
     //app.get('/favicon.ico', (req, res) => res.status(204));
 

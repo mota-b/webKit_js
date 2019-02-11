@@ -18,7 +18,8 @@ router.get("/", passport.authenticate('jwt', {session:false}), (req, res, next) 
                 data.push({
                     _id: user._id,
                     username: user.username,
-                    email: user.email    
+                    email: user.email, 
+                    isAdmin: user.isAdmin   
                 })
             });
 
@@ -43,6 +44,26 @@ router.get("/:id", (req, res, next) => {
     
 // Update
 router.put("/:id", (req, res, next) => {
+    let {user_updated} = req.body,
+        {id} = req.params
+   
+    let update_options = JSON.parse(user_updated)     
+
+    console.log(update_options);
+    
+    User.findOneAndUpdate(
+        {_id: id},
+        {$set:update_options},
+        (err, user) =>{
+            if(!err){
+                res.json({isUpdated:true})
+            }else{
+                res.json({isUpdated:false})
+            }
+            
+        }
+    )
+
     
 })
 

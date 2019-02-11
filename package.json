@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.4",
+    "bower": "^1.8.8",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.5",
     "csurf": "^1.9.0",
@@ -16,6 +17,7 @@
     "express-session": "^1.15.6",
     "helmet": "^3.15.0",
     "http-errors": "~1.6.2",
+    "jsoneditor": "^5.28.2",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.9",
     "morgan": "~1.9.0",

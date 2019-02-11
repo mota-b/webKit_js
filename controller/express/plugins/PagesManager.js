@@ -17,17 +17,36 @@ module.exports = function (page) {
         "/js/navBarScript.js", // Navbar Script
     ]
     
+    
     switch (page) {
         case 'index':
+            links.push("/css/"+page+"Style.css")
+            scripts.push("/js/"+page+"Script.js")
+        break;
+        
         case 'login':
+            links.push("/css/"+page+"Style.css")
+            scripts.push("/js/"+page+"Script.js")
+        break;
+        
         case 'admin':
+            links.push("https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css")    
+            links.push("/bower/jsoneditor/dist/jsoneditor.min.css")
+            links.push("/css/"+page+"Style.css")
+
+            scripts.push("https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js")
+            scripts.push("/bower/jsoneditor/dist/jsoneditor.min.js")
+            scripts.push("/js/"+page+"Script.js")
+            
+        break;
+        
         case 'user':
             links.push("/css/"+page+"Style.css")
             scripts.push("/js/"+page+"Script.js")
-            break;
+        break;
 
         default:
-            break;
+        break;
     }
 
     return {links, scripts}

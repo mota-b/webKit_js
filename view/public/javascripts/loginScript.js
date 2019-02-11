@@ -59,7 +59,7 @@ forms_config = () => {
             },
             
             success: function(data) { 
-                console.log(data)
+                
                 if (data.error){ 
                     alert(data.error.message)
                 }

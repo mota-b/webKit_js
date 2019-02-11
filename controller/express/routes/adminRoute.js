@@ -3,7 +3,7 @@ let router = require('express').Router(),
 
 /* GET admin page. */
 router.get('/', function(req, res, next) {
-  res.render('adminView', { 
+  res.render('adminViews/adminView', { 
     title: 'Admin', 
     links: pagesManager.links,
     scripts: pagesManager.scripts

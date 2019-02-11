@@ -134,7 +134,6 @@ router.post("/log", function(req, res, next){
             
             //Verify if The authentification has succeded
             if(data){
-                console.log(data);
                 data.remember = remember
                 res.json(data)
             }else{
