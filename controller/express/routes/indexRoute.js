@@ -11,4 +11,9 @@ router.get('/', function(req, res, next) {
 
 });
 
+/* log out the user. */
+router.get('/logout', function(req, res, next) {
+  res.send("<script>sessionStorage.removeItem('user'); localStorage.removeItem('user'); window.location.href = '/';</script>")
+});
+
 module.exports = router;

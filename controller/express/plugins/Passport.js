@@ -47,11 +47,13 @@ module.exports = function(app){
             User.findOne({ $or: [{ email: filter.email}, { username: filter.username}]},  (err, user) => {     
                 // Verify if the user is found && the password
                 if(user && user.verifyPassword(password, user.password)){
+                    
                     let result = {
                         ui_data: {
                             username: user.username,
                             email : user.email,
-                            _id: user._id
+                            _id: user._id,
+                            isAdmin: user.isAdmin
                         },
                         token : User.generateJWT(user._id)
                     }

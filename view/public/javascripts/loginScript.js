@@ -26,7 +26,7 @@ forms_config = () => {
     $("#register").submit(function(event){
         event.preventDefault();
         $.ajax( {
-            url:'api/login/reg',
+            url:'/api/login/reg',
             type:"POST",
             data:{
                 "username": $(this).find("input[name=username]").val(),
@@ -39,7 +39,7 @@ forms_config = () => {
                     alert(data.error.message)
                 }
                 else{
-                    window.location.href = "/";
+                    window.location.href = data.redirect;
                 }
             }  
         });
@@ -49,12 +49,13 @@ forms_config = () => {
     $("#log").submit(function(event){
         event.preventDefault();
         $.ajax( {
-            url:'api/login/log',
+            url:'/api/login/log',
             type:"POST",
             data:{
                 "strat_number": 0, // TODO choose strategie number 
                 "username": $(this).find("input[name=username]").val(),
-                "password": $(this).find("input[name=password]").val()
+                "password": $(this).find("input[name=password]").val(),
+                "remember": $("input[name=remember]")[0].checked,
             },
             
             success: function(data) { 
@@ -62,9 +63,18 @@ forms_config = () => {
                 if (data.error){ 
                     alert(data.error.message)
                 }
-                // else{
-                //     window.location.href = "/";
-                // }
+                else{
+                    
+                    if(data.remember=="true"){
+                        
+                        localStorage.setItem("user", JSON.stringify(data))
+                    }else{
+                        
+                        sessionStorage.setItem("user", JSON.stringify(data))
+                    }
+                    
+                    window.location.href = "/";
+                }
             },
             
         });

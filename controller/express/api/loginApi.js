@@ -37,16 +37,14 @@ router.post("/reg", (req, res, next) => {
                  */
 
                 // building the token
-                var token = User.generateJWT(
-                    {
-                        'tokenUser': newUser
-                    },
-                    { expiresIn: "1h" }
+                var token = User.generateEmailJWT(
+                     newUser,
+                    { expiresIn: "20m" }
                 );
                 
 
                 // building the email with the confirmation link nested with token
-                var url = process.env.SITE_URL + "api/login/confirmation/" + token;
+                var url = process.env.SITE_URL + "/api/login/confirmation/" + token;
                 var emailUser = newUser.email;
                 var mailOptions = {
                     from: "kaizen.org.dz@gmail.com",
@@ -54,8 +52,10 @@ router.post("/reg", (req, res, next) => {
                     subject: "Account Verification Token",
                     text:
                         "\nHello,\n\n" +
-                        "Please activate your account by clicking this link : \n" +
-                        url
+                        "Please activate your account by clicking this link : \n\n " +
+                        url 
+
+                        
                 };
 
                 // Sending the email of confirmation to activate the user acount
@@ -75,23 +75,57 @@ router.post("/reg", (req, res, next) => {
                     }
                 });
 
+                res.json({redirect:"/login/confirmation"})
+
             }
             // cypher error ocured 
             else {
                 console.log(err);
+                res.json({error:{message:"acount ceration error try later"}})
             }   
         }
     });
 })
 
+// Confirmation
+router.get("/confirmation/:token", (req, res, next) => {  
+
+    //let {username, email, password} = req.body
+    let {token} = req.params,
+        decode = User.verifyJWT(token);
+
+    if(decode){
+        console.log(decode.tokenUser);
+        
+        newUser = new User(decode.tokenUser)
+        newUser.save()
+
+        res.send(
+            "<script> window.close();</script>"
+        )
+    }
+    
+    // passport.authenticate( strategies[strat_number], (err, data, info) => {
+    //     // This is the result authentication callback
+        
+        
+    //     //Verify if The authentification has succeded
+    //     if(data){
+    //         //console.log(data);
+            
+    //         res.json(data)
+    //     }else{
+    //         res.json({error : info})
+    //     }
+    // })(req, res, next)
+   
+})
 
 // Login
 router.post("/log", function(req, res, next){  
     console.log(req.body);
     
-
-    
-    let {strat_number} = req.body,
+    let {strat_number, remember} = req.body,
         strategies = ['local']
     if (strategies[strat_number]) {
         passport.authenticate( strategies[strat_number], (err, data, info) => {
@@ -100,8 +134,8 @@ router.post("/log", function(req, res, next){
             
             //Verify if The authentification has succeded
             if(data){
-                //console.log(data);
-                
+                console.log(data);
+                data.remember = remember
                 res.json(data)
             }else{
                 res.json({error : info})

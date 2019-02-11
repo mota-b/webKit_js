@@ -6,6 +6,7 @@ let mongoose = require("mongoose"),
 
 // The schema
 let UserSchema = new Schema({
+    isAdmin: {type:String, default:false},
     email: {type: String, require: true, unique: true},
     username: {type: String, require: true, unique: true},
     password: {type: String, require: true},
@@ -48,10 +49,32 @@ UserSchema.statics.generateJWT = (data, options) => {
     
     
 }
+UserSchema.statics.generateEmailJWT = (data, options) => {
+    
+    if (options){
+        return jwt.sign(
+            {
+                tokenUser: data
+            },
+            process.env.TOKEN_SECRET,
+            options
+        );
+    }else{
+        return jwt.sign(
+            {
+                tokenUser: data
+            },
+            process.env.TOKEN_SECRET,
+            { expiresIn: "1d" }
+        );
+    }
+    
+    
+}
 
 // Verify the token
-UserSchema.statics.verifyJWT = (token) => {   
-    return jwt.verify(token, TOKEN_SECRET, {})
+UserSchema.statics.verifyJWT = (token) => {
+    return jwt.verify(token, process.env.TOKEN_SECRET,{})   
 }
 
 // The model
@@ -63,6 +86,7 @@ let fastElem = () => {
     newElem = new User({
         username: "A",
         email: "a@g.com",
+        isAdmin: false,
         password : User.generatePassword("0000")
     })
     

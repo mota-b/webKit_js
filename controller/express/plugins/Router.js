@@ -7,12 +7,13 @@ module.exports = function (app) {
      */
     let admin = require('../routes/adminRoute'),
         index = require('../routes/indexRoute'),
-        login = require('../routes/loginRoute');
+        login = require('../routes/loginRoute'),
+        user = require('../routes/userRoute');
     
     app.use('/admin', admin);
     app.use('/', index);
     app.use('/login' || '/register', login);
-    
+    app.use('/user', user);
 
     // API access
     let loginApi = require('../api/loginApi'),

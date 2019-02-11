@@ -19,19 +19,13 @@ module.exports = function (page) {
     
     switch (page) {
         case 'index':
-            links.push("/css/indexStyle.css")
-            scripts.push("/js/indexScript.js")
+        case 'login':
+        case 'admin':
+        case 'user':
+            links.push("/css/"+page+"Style.css")
+            scripts.push("/js/"+page+"Script.js")
             break;
 
-        case 'login':
-            links.push("/css/loginStyle.css")
-            scripts.push("/js/loginScript.js")
-            break;
-        
-        case 'admin':
-            links.push("/css/adminStyle.css")
-            scripts.push("/js/adminScript.js")
-            break;
         default:
             break;
     }

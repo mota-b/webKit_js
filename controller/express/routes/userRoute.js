@@ -1,14 +1,15 @@
 let router = require('express').Router(),
-    pagesManager = require("../plugins/PagesManager")("admin");
+    pagesManager = require("../plugins/PagesManager")("user");
 
-/* GET admin page. */
+/* GET login page. */
 router.get('/', function(req, res, next) {
-  res.render('adminView', { 
-    title: 'Admin', 
+  res.render('userViews/userView', { 
+    title: 'Login', 
     links: pagesManager.links,
     scripts: pagesManager.scripts
   });
 
 });
+
 
 module.exports = router;
