@@ -123,7 +123,7 @@ router.get("/confirmation/:token", (req, res, next) => {
 
 // Login
 router.post("/log", function(req, res, next){  
-    console.log(req.body);
+    //console.log(req.body);
     
     let {strat_number, remember} = req.body,
         strategies = ['local']

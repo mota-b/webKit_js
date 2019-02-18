@@ -29,7 +29,7 @@ router.get("/", passport.authenticate('jwt', {session:false}), (req, res, next) 
 })
 
 // Read One
-router.get("/:id", (req, res, next) => {
+router.get("/:id",passport.authenticate('jwt', {session:false}), (req, res, next) => {
     let id = req.params['id']
     if(req.params && id){
         User.findById(id, (err, user) => {
@@ -37,13 +37,13 @@ router.get("/:id", (req, res, next) => {
                 res.json(user)
             }
         })
-    }else{console.log(req.params & id);
+    }else{console.log(req.params, id);
     }
     
 })
     
 // Update
-router.put("/:id", (req, res, next) => {
+router.put("/:id", passport.authenticate('jwt', {session:false}), (req, res, next) => {
     let {user_updated} = req.body,
         {id} = req.params
    
@@ -68,7 +68,7 @@ router.put("/:id", (req, res, next) => {
 })
 
 // Delete
-router.delete("/", (req, res, next) => {
+router.delete("/", passport.authenticate('jwt', {session:false}), (req, res, next) => {
 
 })
   
